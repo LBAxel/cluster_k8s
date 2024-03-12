@@ -1,0 +1,23 @@
+replicaCount: 1
+
+postgresql:
+  image: postgres:latest
+  dbName: stream-users
+  username: LBAxel
+  passwordSecret:
+    name: postgresql-secret
+    key: postgres-password
+
+service:
+  name: postgresql-service
+  port: 5432
+  targetPort: 5432
+
+pvc:
+  name: postgresql-pvc
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

@@ -1,0 +1,12 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: cluster-backup
+  namespace : standard
+spec:
+  schedule: "@daily"
+  ttl: 720h
+  storageLocation:
+    name: default
+    bucket: stream-bucket
+  snapshotVolumes: true

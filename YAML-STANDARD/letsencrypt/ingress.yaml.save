@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fastapi-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"  # Utilisez "letsencrypt-prod" pour les tests, utilisez "letsencrypt-prod" en production.
+spec:
+  rules:
+  - host: your-subdomain.cloudns.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi-service
+            port:
+              number: 8000
+  tls:
+  - hosts:
+    - your-subdomain.cloudns.net
+    secretName: fastapi-tls-secret

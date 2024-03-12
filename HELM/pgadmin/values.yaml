@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  repository: dpage/pgadmin4
+  tag: latest
+
+email: leboucher.axel@gmail.com
+passwordSecretName: pgadmin-secret
+passwordSecretKey: pgadmin-password
+
+service:
+  name: pgadmin-service
+  port: 80

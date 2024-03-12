@@ -1,0 +1,21 @@
+replicaCount: 3
+
+hpa:
+  minReplicas: 3
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+image:
+  repository: datascientest/fastapi
+  tag: 1.0.0
+
+service:
+  name: fastapi-service
+  type: LoadBalancer
+  externalPort: 80
+  internalPort: 8000
+
+ingress:
+  enabled: true
+  host: k8s.cours-datascientest-lbaxel.cloudns.be
+  tlsSecretName: fastapi-tls-secret
